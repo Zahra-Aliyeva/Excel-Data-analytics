@@ -82,7 +82,7 @@ Both INDEX-MATCH and XLOOKUP were used for the Regional Manager column to demons
 |---|---|---|
 | Profit Status | Profitable vs. Loss | `=IF(U2>0,"Profitable","Loss")` |
 | Discount Level | No Discount / Low / Medium / High | `=IF(T2=0,"No Discount",IF(T2<=0.1,"Low",IF(T2<=0.2,"Medium","High")))` |
-| Margin Category | Low / Medium / High Margin | `=IFS(AB2<0.2,"Low Margin",AB2<0.3%,"Medium Margin",AB2>=0.3%,"High Margin")` |
+| Margin Category | Low / Medium / High Margin | `=IFS(AB2<0.2,"Low Margin",AB2<0.3,"Medium Margin",AB2>=0.3,"High Margin")` |
 
 **SUMIFS / COUNTIFS summary table (by region):**
 
