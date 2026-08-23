@@ -50,7 +50,7 @@ I created a Pivot Table with Region as a Filter, Category in the Rows area, Ship
 **4. How have sales and profit changed across regions over the years?**
 I created a Pivot Table by grouping Order Date by Year, adding Segment as a Filter, placing Year in the Rows area, Region in the Columns area, and both Sum of Sales and Sum of Profit in the Values area. This analysis shows how sales and profit changed across regions over time. The results show that 2026 had the highest overall sales ($745,567.53) and profit ($95,926.35), while sales and profit generally increased over the period. 
 
-**5.  5. Which customer segment receives the highest average discount?** 
+**5.  Which customer segment receives the highest average discount?** 
 I created a Pivot Table with Region as a Filter, Segment in the Rows area, and Average of Discount in the Values area. The results show that Consumer and Corporate received the highest average discount at 0.16, while Home Office received a slightly lower average discount of 0.15.
 
 ---
