@@ -44,14 +44,14 @@ Sub-Category in Rows, Sum of Sales in Values, sorted descending → **Chairs** r
 **2. Which product category generates the highest profit in each region?**
 Segment as filter, Category in Rows, Region in Columns, Sum of Profit in Values → **Technology** is the most profitable category in every region.
 
-**3. Which customer segment receives the highest average discount?**
-Region as filter, Segment in Rows, Average of Discount in Values → **Consumer** and **Corporate** receive the highest average discount (0.16), **Home Office** slightly lower (0.15).
+**3. How do sales and profit compare across different shipping modes?**
+I created a Pivot Table with Region as a Filter, Category in the Rows area, Ship Mode in the Columns area, and both Sum of Sales and Sum of Profit in the Values area. This analysis compares sales and profit across different shipping modes and product categories. The results show that Standard Class generated the highest sales and profit among the shipping modes.
 
-**4. How do sales and profit compare across different shipping modes?**
-Region as filter, Category in Rows, Ship Mode in Columns, Sum of Sales + Sum of Profit in Values → **Standard Class** generates the highest sales and profit across all categories.
+**4. How have sales and profit changed across regions over the years?**
+I created a Pivot Table by grouping Order Date by Year, adding Segment as a Filter, placing Year in the Rows area, Region in the Columns area, and both Sum of Sales and Sum of Profit in the Values area. This analysis shows how sales and profit changed across regions over time. The results show that 2026 had the highest overall sales ($745,567.53) and profit ($95,926.35), while sales and profit generally increased over the period. 
 
-**5. How have sales and profit changed across regions over the years?**
-Order Date grouped by Year, Segment as filter, Years in Rows, Region in Columns, Sum of Sales + Sum of Profit in Values → Sales and profit generally trended upward, with **2026** the strongest year on record.
+**5.  5. Which customer segment receives the highest average discount?** 
+I created a Pivot Table with Region as a Filter, Segment in the Rows area, and Average of Discount in the Values area. The results show that Consumer and Corporate received the highest average discount at 0.16, while Home Office received a slightly lower average discount of 0.15.
 
 ---
 
