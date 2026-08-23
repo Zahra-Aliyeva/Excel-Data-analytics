@@ -108,7 +108,7 @@ Built using PivotTables, PivotCharts, KPI cards, Slicers, and Conditional Format
 |---|---|---|
 | Total Sales | $2.33M | `=SUM(Orders!R:R)` |
 | Total Profit | $292K | `=SUM(Orders!U:U)` |
-| Total Orders | 10,194 | `=COUNTA(Orders!B:B)-1` |
+| Total Orders | 5,111 | `=COUNTA(UNIQUE(Orders!B2:B10195))` |
 
 **Charts (4 types)**
 
@@ -125,7 +125,7 @@ Built using PivotTables, PivotCharts, KPI cards, Slicers, and Conditional Format
 
 - **Profit** → Green (profitable) / Red (loss)
 - **Unit Cost** → Data Bars, longer bar = higher cost
-- **Discount Level** → Green (No Discount), Yellow (Medium), Red (High)
+- **Discount Level** → Green (No Discount), Blue (Low) Yellow (Medium), Red (High)
 
 ---
 
@@ -148,7 +148,7 @@ This README serves as the formula documentation, consolidating every formula use
 | Returned Orders by Region (COUNTIFS) | `=COUNTIFS(Orders!M:M,"West",Orders!AA:AA,"Yes")` |
 | Total Sales KPI | `=SUM(Orders!R:R)` |
 | Total Profit KPI | `=SUM(Orders!U:U)` |
-| Total Orders KPI | `=COUNTA(Orders!B:B)-1` |
+| Total Orders KPI | `=COUNTA(UNIQUE(Orders!B2:B10195))` |
 
 ---
 
