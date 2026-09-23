@@ -124,8 +124,6 @@ A few things stood out while putting this together, worth flagging to the sales 
 
 **Furniture is barely paying for itself.** $497K in sales produced only $20K in profit, a margin under 5%. Before writing that off as normal for the category, it's worth checking whether Furniture is simply being discounted more heavily than everything else — even a small pullback there could move real money to the bottom line.
 
-**The 2023–2026 sales-vs-profit trend needs a second look before it's shared outside the team.** Total sales dropped by more than 95% over four years while profit nearly doubled. That's not impossible, but it's unusual enough that it's worth confirming with whoever owns the Orders data — either 2026 is a partial year, or there's a genuine and pretty dramatic shift toward fewer, higher-margin orders.
-
 **The discount gap between segments is small but consistent.** Consumer and Corporate average a 16% discount, Home Office averages 15%. One point isn't much on its own, but if Home Office customers are ordering similar volumes without needing the extra discount, that points to the other two segments being over-discounted rather than Home Office being under-served.
 
 **Standard Class shipping wins mostly because it's the default, not necessarily because it's the best option.** It's fine that it leads on volume, but profit-per-order by shipping mode is worth pulling separately — expedited options like Same Day or First Class often carry costs that a plain sales/profit comparison won't surface.
