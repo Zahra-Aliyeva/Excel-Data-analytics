@@ -14,7 +14,7 @@ An Excel analytics project using the Superstore retail dataset. I worked with ra
 | Returns | Order IDs that were returned |
 
 ## ✅ Checkpoint 1 — Data Cleaning
-[Checkpoint-1.xlsx](Checkpoint-1(1).xlsx)
+
 
 - Removed duplicate rows using Excel's built-in duplicate removal (10 duplicates found and removed).
 - Deleted a completely blank row (row 1872).
@@ -28,7 +28,7 @@ An Excel analytics project using the Superstore retail dataset. I worked with ra
   - Bolded all column headers.
 
 ## ✅ Checkpoint 2 — Pivot Tables
-[Checkpoint-2.xlsx](Checkpoint-2.xlsx)
+
 
 Five business questions answered using PivotTables:
 
@@ -48,7 +48,7 @@ Order Date grouped by Year, Segment as a filter, Year in Rows, Region in Columns
 Region as a filter, Segment in Rows, Average of Discount in Values. Consumer and Corporate both average a 16% discount, Home Office comes in slightly lower at 15%.
 
 ## ✅ Checkpoint 3 — Lookup Formulas
-[Checkpoint-3.xlsb](Checkpoint-3.xlsb)
+
 
 Combined data from People and Products into the Orders sheet using both INDEX-MATCH and XLOOKUP, plus a VLOOKUP to flag returns:
 
@@ -64,7 +64,7 @@ Combined data from People and Products into the Orders sheet using both INDEX-MA
 Regional Manager was pulled two different ways on purpose — INDEX-MATCH and XLOOKUP side by side — just to confirm both land on the same result. They did.
 
 ## ✅ Checkpoint 4 — Calculated Fields
-[Checkpoint-4.xlsb](Checkpoint-4.xlsb)
+
 
 IF / Nested IF / IFS classifications:
 
@@ -86,7 +86,7 @@ Same formulas repeated for East, Central, and South, just swapping the region cr
 ⚠️ Quality check: confirmed the SUMIFS/COUNTIFS criteria ranges and sum range were the same size — a mismatch here fails silently and just returns 0 instead of throwing an error.
 
 ## ✅ Checkpoint 5 — Interactive Dashboard
-[Checkpoint-5.xlsb](Checkpoint-5.xlsb)
+
 
 Built using PivotTables, PivotCharts, KPI cards, Slicers, and Conditional Formatting.
 
@@ -130,27 +130,6 @@ A few things stood out while putting this together, worth flagging to the sales 
 
 **No single product is carrying the business.** The top 5 products by sales all sit in a tight $14.6K–$25.9K range, so there's no one SKU the business is overly dependent on. That's healthy from a risk standpoint, but it also means the more realistic path to growth is pushing Technology harder alongside these steady sellers, not chasing one big hit product.
 
-## ✅ Checkpoint 6 — Formula Documentation
-
-This README doubles as the formula documentation, consolidating every formula used across the project:
-
-| Purpose | Formula |
-|---|---|
-| Regional Manager (INDEX-MATCH) | `=INDEX(People!$A$2:$A$5,MATCH(M2,People!$B$2:$B$5,0))` |
-| Regional Manager (XLOOKUP) | `=XLOOKUP(M2,People!$B:$B,People!$A:$A,"Not Found")` |
-| Supplier (INDEX-MATCH) | `=INDEX(Products!$C:$C,MATCH(N2,Products!$A:$A,0))` |
-| Unit Cost (INDEX-MATCH) | `=INDEX(Products!$D:$D,MATCH(N2,Products!$A:$A,0))` |
-| Returned (VLOOKUP) | `=IFERROR(VLOOKUP(B2,Returns!$A:$B,2,FALSE),"No")` |
-| Target Margin (XLOOKUP) | `=XLOOKUP(N2,Products!$A:$A,Products!$E:$E,"Not Found")` |
-| Profit Status (IF) | `=IF(U2>0,"Profitable","Loss")` |
-| Discount Level (Nested IF) | `=IF(T2=0,"No Discount",IF(T2<=0.1,"Low",IF(T2<=0.2,"Medium","High")))` |
-| Margin Category (IFS) | `=IFS(AB2<0.2,"Low Margin",AB2<0.3,"Medium Margin",AB2>=0.3,"High Margin")` |
-| Total Sales by Region (SUMIFS) | `=SUMIFS(Orders!$R:$R,Orders!$M:$M,"West")` |
-| Returned Orders by Region (COUNTIFS) | `=COUNTIFS(Orders!M:M,"West",Orders!AA:AA,"Yes")` |
-| Total Sales KPI | `=SUM(Orders!R:R)` |
-| Total Profit KPI | `=SUM(Orders!U:U)` |
-| Total Orders KPI | `=COUNTA(UNIQUE(Orders!B2:B10195))` |
-| Profit Margin % KPI | `=SUM(Orders!U:U)/SUM(Orders!R:R)` |
 
 ## 🛠️ Skills Demonstrated
 
