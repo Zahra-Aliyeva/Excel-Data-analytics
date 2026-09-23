@@ -14,7 +14,7 @@ An Excel analytics project using the Superstore retail dataset. I worked with ra
 | Returns | Order IDs that were returned |
 
 ## ✅ Checkpoint 1 — Data Cleaning
-[Checkpoint-1.xlsx](Checkpoint-1(1).xlsx)
+[Checkpoint-1.xlsx](Checkpoint-1 (1).xlsx)
 
 - Removed duplicate rows using Excel's built-in duplicate removal (10 duplicates found and removed).
 - Deleted a completely blank row (row 1872).
