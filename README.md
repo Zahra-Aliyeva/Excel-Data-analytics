@@ -2,7 +2,7 @@
 
 An Excel analytics project built on the Superstore retail dataset, starts with raw, messy data and ends with a fully interactive sales dashboard, with pivot tables, lookup formulas, calculated fields, and conditional formatting worked in along the way.
 
-![Dashboard Preview](Screenshot.png)
+![Dashboard Preview](Screenshot .png)
 
 ## 🗂️ Dataset
 
