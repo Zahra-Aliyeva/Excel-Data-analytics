@@ -1,6 +1,6 @@
 # 📊 Excel Data Analytics — Superstore Sales Project
 
-An Excel analytics project built on the Superstore retail dataset, starts with raw, messy data and ends with a fully interactive sales dashboard, with pivot tables, lookup formulas, calculated fields, and conditional formatting worked in along the way.
+An Excel analytics project using the Superstore retail dataset. I worked with raw data, cleaned and organized it, then used pivot tables, lookup formulas, calculated fields, and conditional formatting to analyze the data and build an interactive sales dashboard.
 
 ![Dashboard Preview](Screenshot.png)
 
