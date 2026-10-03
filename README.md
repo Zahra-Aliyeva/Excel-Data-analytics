@@ -1,156 +1,74 @@
-# 📊 Excel Data Analytics — Superstore Sales Project
+# Superstore Sales Dashboard (Excel)
 
-An Excel analytics project using the Superstore retail dataset. I worked with raw data, cleaned and organized it, then used pivot tables, lookup formulas, calculated fields, and conditional formatting to analyze the data and build an interactive sales dashboard.
+An interactive Excel dashboard built on the Superstore retail dataset (10,194 order lines, Jan 2023 – Dec 2026). The goal was simple: find out where the business makes money, and where it quietly loses it.
 
-![Dashboard Preview](Screenshot.png)
+![Dashboard](Screenshot.png)
 
-## 🗂️ Dataset
+## The short story
 
-| Sheet | Description |
+Sales are growing, but profit is not keeping pace.
+
+- **2026 sales rose 21.4%** over 2025, while **profit rose 16.0%**. Margin slipped from 13.5% to 12.9%.
+- **Discounts above 20% are the biggest leak.** Those 1,415 order lines brought in $365K in sales and lost **$136K**. Orders with no discount earn a 29.6% margin; orders discounted 40%+ lose 77 cents on every dollar.
+- **Furniture sells but barely earns.** It produces $755K in sales (the same scale as the other two categories) but only $20K profit, a 2.6% margin, against about 17% for Office Supplies and Technology.
+- **Two products explain most of it.** Tables (−$17.8K) and Bookcases (−$3.6K) are the only big loss makers, and they also carry the heaviest discounts in the category (25.8% and 21.5% on average).
+- **Geography matters too.** Texas (−$25.7K), Ohio (−$17.0K) and Pennsylvania (−$15.6K) are the largest loss-making states. By region, Central has the weakest margin (7.9%) and West the strongest (15.0%).
+
+## Key numbers
+
+| KPI | Value |
 |---|---|
-| Orders | Order-level transactions: dates, customer, region, product, sales, quantity, discount, profit |
-| Products | Product catalog with supplier, unit cost, and target margin |
-| People | Regional managers mapped to each sales region |
-| Returns | Order IDs that were returned |
+| Total Sales | $2.33M |
+| Total Profit | $292.3K |
+| Profit Margin | 12.6% |
+| Total Orders | 5,111 (distinct Order IDs) |
 
-## ✅ Checkpoint 1 — Data Cleaning
+Growth badges on the cards always compare 2026 vs 2025. The big numbers follow the slicers.
 
+## What's on the dashboard
 
-- Removed duplicate rows using Excel's built-in duplicate removal (10 duplicates found and removed).
-- Deleted a completely blank row (row 1872).
-- Fixed inconsistent data types:
-  - Order Date — was stored as Text, converted to Short Date.
-  - Ship Date — already correctly formatted as Date.
-  - Unit Cost, Sales, Quantity, Discount — were General, converted to Number.
-- Standardized formatting across the sheet:
-  - Unified font to Calibri, size 11 (previously mixed with Times New Roman and inconsistent sizes).
-  - Applied AutoFit to all column widths.
-  - Bolded all column headers.
-
-## ✅ Checkpoint 2 — Pivot Tables
-
-
-Five business questions answered using PivotTables:
-
-**1. Which product sub-category generates the highest total sales?**
-Sub-Category in Rows, Sum of Sales in Values, sorted descending → Chairs ranked highest, followed by Phones and Storage.
-
-**2. Which product category generates the highest profit in each region?**
-Segment as a filter, Category in Rows, Region in Columns, Sum of Profit in Values → Technology comes out on top in every single region.
-
-**3. How do sales and profit compare across different shipping modes?**
-Region as a filter, Category in Rows, Ship Mode in Columns, Sum of Sales and Sum of Profit in Values. Standard Class pulls ahead of every other shipping mode on both sales and profit — not surprising, since it's usually the default option customers don't bother changing.
-
-**4. How have sales and profit changed across regions over the years?**
-Order Date grouped by Year, Segment as a filter, Year in Rows, Region in Columns, Sum of Sales and Sum of Profit in Values. The results show something worth double-checking before this goes in front of anyone outside the team: total sales dropped from $1.82M in 2023 to $40.9K in 2026, while profit moved the opposite direction, climbing from $51.7K to $95.9K over the same four years. That swing is big enough that it's worth confirming with whoever maintains the Orders sheet — it could reflect a real shift toward fewer, higher-margin sales, or it could mean 2026 isn't a complete year of data yet.
-
-**5. Which customer segment receives the highest average discount?**
-Region as a filter, Segment in Rows, Average of Discount in Values. Consumer and Corporate both average a 16% discount, Home Office comes in slightly lower at 15%.
-
-## ✅ Checkpoint 3 — Lookup Formulas
-
-
-Combined data from People and Products into the Orders sheet using both INDEX-MATCH and XLOOKUP, plus a VLOOKUP to flag returns:
-
-| New Column | Method | Formula |
-|---|---|---|
-| Regional Manager | INDEX-MATCH | `=INDEX(People!$A$2:$A$5,MATCH(M2,People!$B$2:$B$5,0))` |
-| Regional Manager | XLOOKUP | `=XLOOKUP(M2,People!$B:$B,People!$A:$A,"Not Found")` |
-| Supplier | INDEX-MATCH | `=INDEX(Products!$C:$C,MATCH(N2,Products!$A:$A,0))` |
-| Unit Cost | INDEX-MATCH | `=INDEX(Products!$D:$D,MATCH(N2,Products!$A:$A,0))` |
-| Returned | VLOOKUP | `=IFERROR(VLOOKUP(B2,Returns!$A:$B,2,FALSE),"No")` |
-| Target Margin | XLOOKUP | `=XLOOKUP(N2,Products!$A:$A,Products!$E:$E,"Not Found")` |
-
-Regional Manager was pulled two different ways on purpose — INDEX-MATCH and XLOOKUP side by side — just to confirm both land on the same result. They did.
-
-## ✅ Checkpoint 4 — Calculated Fields
-
-
-IF / Nested IF / IFS classifications:
-
-| New Column | Logic | Formula |
-|---|---|---|
-| Profit Status | Profitable vs. Loss | `=IF(U2>0,"Profitable","Loss")` |
-| Discount Level | No Discount / Low / Medium / High | `=IF(T2=0,"No Discount",IF(T2<=0.1,"Low",IF(T2<=0.2,"Medium","High")))` |
-| Margin Category | Low / Medium / High Margin | `=IFS(AB2<0.2,"Low Margin",AB2<0.3,"Medium Margin",AB2>=0.3,"High Margin")` |
-
-SUMIFS / COUNTIFS summary table (by region):
-
-| Metric | Formula (example: West) |
+| Visual | What it shows |
 |---|---|
-| Total Sales by Region | `=SUMIFS(Orders!$R:$R,Orders!$M:$M,"West")` |
-| Returned Orders by Region | `=COUNTIFS(Orders!M:M,"West",Orders!AA:AA,"Yes")` |
+| KPI cards | Sales, profit, margin, orders, with 2026 vs 2025 change |
+| Sales and Profit by Month | Seasonality: sales build through the year and peak in Q4 |
+| Discounts Above 20% Turn Profit Negative | Profit by discount band |
+| Bottom 5 Sub-Categories by Profit | Tables, Bookcases and Supplies lose money |
+| Sales vs Profit by Category | Revenue, profit and margin side by side |
+| Profit by State | Map of profit and loss by state |
+| Slicers | Segment, Region, Years |
 
-Same formulas repeated for East, Central, and South, just swapping the region criterion.
+## Recommendations
 
-⚠️ Quality check: confirmed the SUMIFS/COUNTIFS criteria ranges and sum range were the same size — a mismatch here fails silently and just returns 0 instead of throwing an error.
+1. **Cap discounts at 20%.** Nothing above that threshold is profitable on average. This is the single biggest lever on the dashboard.
+2. **Review Table and Bookcase pricing.** Their losses are larger than all of Furniture's profit. Fixing them would change the category's margin picture.
+3. **Look closer at Texas, Ohio and Pennsylvania.** Check whether the losses come from discounting, product mix or shipping costs.
+4. **Don't judge categories by sales alone.** Technology earns $147K on $840K of sales; Furniture earns $20K on $755K.
 
-## ✅ Checkpoint 5 — Interactive Dashboard
+## How it was built
 
+1. **Data cleaning:** removed 10 duplicate rows and one blank row, converted Order Date from text to a real date, fixed number formats, standardized fonts and headers.
+2. **PivotTables:** sales and profit by sub-category, category, region, ship mode, year and discount band.
+3. **Lookups:** Regional Manager (INDEX-MATCH and XLOOKUP cross-checked), Supplier, Unit Cost, Target Margin, and a VLOOKUP flag for returned orders.
+4. **Calculated fields:** Profit Status (IF), Discount Level (nested IF), Margin Category (IFS), Discount Band, plus SUMIFS/COUNTIFS summaries by region.
+5. **Dashboard:** PivotCharts, KPI cards linked to cells, three connected slicers and conditional formatting (green for profit, red for loss).
 
-Built using PivotTables, PivotCharts, KPI cards, Slicers, and Conditional Formatting.
+## Things I learned along the way
 
-**KPI Cards**
+- A helper column that counted only single-line orders made Total Orders show 2,593 instead of 5,111. Distinct counts on Order ID fixed it. Always reconcile a KPI against the raw data.
+- Quarter and month views that combine all years show seasonality, not trend. I labelled them honestly and used year-over-year for the growth badges.
+- Chart titles should state the finding, not just describe the chart.
 
-| KPI | Value | Formula |
-|---|---|---|
-| Total Sales | $2.33M | `=SUM(Orders!R:R)` |
-| Total Profit | $292.3K | `=SUM(Orders!U:U)` |
-| Total Orders | 5,111 | `=COUNTA(UNIQUE(Orders!B2:B10195))` |
-| Profit Margin % | 12.6% | `=SUM(Orders!U:U)/SUM(Orders!R:R)` |
+## Files
 
-**Charts (4 types)**
-
-| Chart | Type | Insight |
-|---|---|---|
-| Total Sales by Region | Clustered Column | West leads at $671K, South trails at $507K |
-| Top 5 Products by Sales | Horizontal Bar | Revenue is spread across products rather than concentrated in one — the top seller (a message book multi-pack) brings in $25.9K, barely ahead of staple envelopes and binding combs |
-| Sales Trend by Year | Line | Total sales fell steadily, from $1.82M in 2023 down to $40.9K in 2026, while profit climbed the whole time, from $51.7K to $95.9K |
-| Sales vs Profit by Category | Clustered Column | Office Supplies brings in far more revenue ($1.44M) than the other categories, but Technology actually returns more profit ($147K vs. $126K) on less than a third of the sales |
-
-Slicers — Segment, Region, and Years — all connected to the PivotCharts for interactive filtering.
-
-**Conditional Formatting**
-
-- Profit → Green (profitable) / Red (loss)
-- Unit Cost → Data Bars, longer bar = higher cost
-- Discount Level → Green (No Discount), Blue (Low), Yellow (Medium), Red (High)
-
-## 💡 Key Insights & Recommendations
-
-A few things stood out while putting this together, worth flagging to the sales and finance teams:
-
-**Technology is quietly the strongest category, not Office Supplies.** Office Supplies drives the most revenue on the dashboard, but Technology converts more of its sales into actual profit — $147K in profit from $386K in sales, against $126K from $1.44M. If budget or sales attention is being allocated by "which category sells the most," that's pointing at the wrong one.
-
-**Furniture is barely paying for itself.** $497K in sales produced only $20K in profit, a margin under 5%. Before writing that off as normal for the category, it's worth checking whether Furniture is simply being discounted more heavily than everything else — even a small pullback there could move real money to the bottom line.
-
-**The discount gap between segments is small but consistent.** Consumer and Corporate average a 16% discount, Home Office averages 15%. One point isn't much on its own, but if Home Office customers are ordering similar volumes without needing the extra discount, that points to the other two segments being over-discounted rather than Home Office being under-served.
-
-**Standard Class shipping wins mostly because it's the default, not necessarily because it's the best option.** It's fine that it leads on volume, but profit-per-order by shipping mode is worth pulling separately — expedited options like Same Day or First Class often carry costs that a plain sales/profit comparison won't surface.
-
-**No single product is carrying the business.** The top 5 products by sales all sit in a tight $14.6K–$25.9K range, so there's no one SKU the business is overly dependent on. That's healthy from a risk standpoint, but it also means the more realistic path to growth is pushing Technology harder alongside these steady sellers, not chasing one big hit product.
-
-
-## 🛠️ Skills Demonstrated
-
-- Data cleaning: duplicates, blank rows, inconsistent formats/fonts
-- PivotTables & PivotCharts for multi-dimensional business analysis
-- Lookup formulas: VLOOKUP, XLOOKUP, INDEX-MATCH
-- Calculated fields: IF, nested IF, IFS, SUMIFS, COUNTIFS
-- Dashboard design: KPI cards, slicers, conditional formatting
-- Working with the Excel Binary Workbook (.xlsb) format for larger files
-
-## 📎 Project Structure
-
-| File | Checkpoint |
+| File | Content |
 |---|---|
-| Checkpoint-1.xlsx | 1 — Data cleaning |
-| Checkpoint-2.xlsx | 2 — Pivot tables |
-| Checkpoint-3.xlsb | 3 — Lookup formulas |
-| Checkpoint-4.xlsb | 4 — Calculated fields |
-| Checkpoint-5.xlsb | 5 — Dashboard & conditional formatting |
+| Checkpoint-1.xlsx | Data cleaning |
+| Checkpoint-2.xlsx | Pivot tables |
+| Checkpoint-3.xlsb | Lookup formulas |
+| Checkpoint-4.xlsb | Calculated fields |
+| Checkpoint-5.xlsb | Final dashboard |
 | Screenshot.png | Dashboard preview |
 
-## 👤 Author
+**Tools:** Excel (PivotTables, PivotCharts, slicers, XLOOKUP, INDEX-MATCH, IFS, SUMIFS)
 
-Zahra Aliyeva
+**Author:** Zahra Aliyeva
