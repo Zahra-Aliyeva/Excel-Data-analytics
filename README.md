@@ -1,6 +1,6 @@
 # Superstore Sales Dashboard (Excel)
 
-An interactive Excel dashboard built on the Superstore retail dataset (10,194 order lines, Jan 2023 – Dec 2026). The goal was simple: find out where the business makes money, and where it quietly loses it.
+This is my Excel dashboard for the Superstore sales data (around 10K orders, 2023-2026). I wanted to see which products, discounts and regions drive profit, and which ones quietly eat it.
 
 ![Dashboard](Screenshot.png)
 
