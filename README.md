@@ -1,6 +1,6 @@
 # Superstore Sales Dashboard (Excel)
 
-This is my Excel dashboard for the Superstore sales data (around 10K orders, 2023-2026). I wanted to see which products, discounts and regions drive profit, and which ones quietly eat it.
+This is my Excel dashboard for the Superstore sales data (around 10K order lines, 2023-2026). I wanted to see which products, discounts and regions drive profit, and which ones quietly eat it.
 
 ![Dashboard](Screenshot.png)
 
