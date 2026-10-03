@@ -58,16 +58,7 @@ Growth badges on the cards always compare 2026 vs 2025. The big numbers follow t
 - Quarter and month views that combine all years show seasonality, not trend. I labelled them honestly and used year-over-year for the growth badges.
 - Chart titles should state the finding, not just describe the chart.
 
-## Files
 
-| File | Content |
-|---|---|
-| Checkpoint-1.xlsx | Data cleaning |
-| Checkpoint-2.xlsx | Pivot tables |
-| Checkpoint-3.xlsb | Lookup formulas |
-| Checkpoint-4.xlsb | Calculated fields |
-| Checkpoint-5.xlsb | Final dashboard |
-| Screenshot.png | Dashboard preview |
 
 **Tools:** Excel (PivotTables, PivotCharts, slicers, XLOOKUP, INDEX-MATCH, IFS, SUMIFS)
 
