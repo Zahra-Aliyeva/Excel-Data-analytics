@@ -68,4 +68,6 @@ I also noticed that when month and quarter data from all years are shown togethe
 
 Another small lesson was that chart titles are more useful when they explain what the viewer should notice, rather than simply repeating the name of the metric.
 
-**Tools:** Excel (PivotTables, PivotCharts, slicers, XLOOKUP, INDEX-MATCH, IFS
+**Tools:** Excel (PivotTables, PivotCharts, slicers, XLOOKUP, INDEX-MATCH, IFS, SUMIFS)
+
+**Author:** Zahra Aliyeva
